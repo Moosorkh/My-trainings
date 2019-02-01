@@ -15,23 +15,26 @@ namespace Chain.Demonstration
     {        
         static void Main()
         {
-            //Setup Chain of responsibility
+            // Setup Chain of Responsibility
             Approver ronny = new Director();
             Approver bobby = new VicePresident();
             Approver ricky = new President();
 
             ronny.SetSuccessor(bobby);
             bobby.SetSuccessor(ricky);
-            //Generate and process purchase request
+
+            // Generate and process purchase requests
             Purchase p = new Purchase(8884, 350.00, "Assets");
-                ronny.ProcessRequest(p);
+            ronny.ProcessRequest(p);
 
             p = new Purchase(5675, 33390.10, "Project Poison");
             ronny.ProcessRequest(p);
 
-            p = new Purchase(5676, 144400.00, "project BBD");
+            p = new Purchase(5676, 144400.00, "Project BBD");
             ronny.ProcessRequest(p);
 
+            // Wait for user
+            Console.ReadKey();
         }
     }
 
